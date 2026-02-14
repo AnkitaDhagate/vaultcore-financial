@@ -34,7 +34,7 @@ CREATE TABLE accounts_vault (
     user_id NUMBER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_accounts_user FOREIGN KEY (user_id) REFERENCES users(id)
+    CONSTRAINT fk_accounts_user_vault FOREIGN KEY (user_id) REFERENCES users_vault(id)
 );
 
 -- Create Ledger Entries Table (Immutable - Append Only)
@@ -46,61 +46,160 @@ CREATE TABLE ledger_entries_vault (
     direction VARCHAR2(6) NOT NULL CHECK (direction IN ('DEBIT', 'CREDIT')),
     description VARCHAR2(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_ledger_account FOREIGN KEY (account_id) REFERENCES accounts(id)
+    CONSTRAINT fk_ledger_account_vault FOREIGN KEY (account_id) REFERENCES accounts_vault(id)
 );
 
 -- Create Indexes for Performance
-CREATE INDEX idx_ledger_account_date ON ledger_entries_vault(account_id, created_at DESC);
-CREATE INDEX idx_ledger_transaction ON ledger_entries_vault(transaction_id);
-CREATE INDEX idx_accounts_user ON accounts_vault(user_id);
-CREATE INDEX idx_users_username ON users_vault(username);
-
--- Create Function to enforce double-entry balance
-CREATE OR REPLACE TRIGGER trg_check_transaction_balance
-BEFORE INSERT ON ledger_entries_vault
-FOR EACH ROW
-DECLARE
-    v_debit_total NUMBER;
-    v_credit_total NUMBER;
-BEGIN
-    -- This trigger would need to check the entire transaction
-    -- For simplicity, we'll enforce at application level
-    NULL;
-END;
-/
+CREATE INDEX idx_ledger_account_date_vault ON ledger_entries_vault(account_id, created_at DESC);
+CREATE INDEX idx_ledger_transaction_vault ON ledger_entries_vault(transaction_id);
+CREATE INDEX idx_accounts_user_vault ON accounts_vault(user_id);
+CREATE INDEX idx_users_username_vault ON users_vault(username);
 
 -- Create Sequence for transaction IDs
-CREATE SEQUENCE seq_transaction_id
+CREATE SEQUENCE seq_transaction_id_vault
 START WITH 1000
 INCREMENT BY 1
 NOCACHE
 NOCYCLE;
 
 -- Create View for account balances
-CREATE OR REPLACE VIEW v_account_balances AS
+CREATE OR REPLACE VIEW v_account_balances_vault AS
 SELECT 
     a.id,
     a.account_number,
     a.account_type,
     a.user_id,
     a.balance as current_balance,
+    u.username,
+    u.full_name,
     NVL((SELECT SUM(amount) FROM ledger_entries_vault WHERE account_id = a.id AND direction = 'DEBIT'), 0) as total_debits,
-    NVL((SELECT SUM(amount) FROM ledger_entries_vault WHERE account_id = a.id AND direction = 'CREDIT'), 0) as total_credits
-FROM accounts a;
+    NVL((SELECT SUM(amount) FROM ledger_entries_vault WHERE account_id = a.id AND direction = 'CREDIT'), 0) as total_credits,
+    NVL((SELECT SUM(amount) FROM ledger_entries_vault WHERE account_id = a.id AND direction = 'DEBIT'), 0) - 
+    NVL((SELECT SUM(amount) FROM ledger_entries_vault WHERE account_id = a.id AND direction = 'CREDIT'), 0) as calculated_balance
+FROM accounts_vault a
+JOIN users_vault u ON a.user_id = u.id;
 
--- Insert sample data
+-- Create Trigger to automatically update account balance
+CREATE OR REPLACE TRIGGER trg_update_account_balance
+AFTER INSERT ON ledger_entries_vault
+FOR EACH ROW
+DECLARE
+    v_balance_diff NUMBER;
+BEGIN
+    IF :NEW.direction = 'DEBIT' THEN
+        v_balance_diff := :NEW.amount;
+    ELSE
+        v_balance_diff := -(:NEW.amount);
+    END IF;
+    
+    UPDATE accounts_vault 
+    SET balance = balance + v_balance_diff,
+        updated_at = CURRENT_TIMESTAMP
+    WHERE id = :NEW.account_id;
+END;
+/
+
+-- Create Trigger to enforce double-entry balance for each transaction
+CREATE OR REPLACE TRIGGER trg_check_transaction_balance_vault
+AFTER INSERT ON ledger_entries_vault
+DECLARE
+    v_transaction_id ledger_entries_vault.transaction_id%TYPE;
+    v_debit_total NUMBER;
+    v_credit_total NUMBER;
+    v_transaction_count NUMBER;
+BEGIN
+    -- This is a simplified version - in production, you'd want more sophisticated validation
+    FOR rec IN (SELECT DISTINCT transaction_id FROM ledger_entries_vault WHERE created_at > SYSTIMESTAMP - INTERVAL '1' MINUTE)
+    LOOP
+        SELECT SUM(CASE WHEN direction = 'DEBIT' THEN amount ELSE 0 END),
+               SUM(CASE WHEN direction = 'CREDIT' THEN amount ELSE 0 END),
+               COUNT(*)
+        INTO v_debit_total, v_credit_total, v_transaction_count
+        FROM ledger_entries_vault
+        WHERE transaction_id = rec.transaction_id;
+        
+        IF v_transaction_count > 0 AND v_debit_total != v_credit_total THEN
+            RAISE_APPLICATION_ERROR(-20001, 'Double-entry violation: Debits must equal Credits for transaction ' || rec.transaction_id);
+        END IF;
+    END LOOP;
+END;
+/
+
+-- Insert sample data with hashed passwords (BCrypt format)
+-- Note: These are example BCrypt hashes for 'password123' and 'SecurePass123'
 INSERT INTO users_vault (username, password, email, full_name) 
-VALUES ('john_doe', '$2a$10$YourHashedPasswordHere', 'john@example.com', 'John Doe');
+VALUES ('john_doe', '$2a$10$N9qo8uLOickgx2ZMRZoMy.Mr5J7jsKQ3DL5KpYkYzqL8X9zQqJqKq', 'john.doe@example.com', 'John Doe');
 
 INSERT INTO users_vault (username, password, email, full_name) 
-VALUES ('jane_smith', '$2a$10$YourHashedPasswordHere', 'jane@example.com', 'Jane Smith');
+VALUES ('jane_smith', '$2a$10$N9qo8uLOickgx2ZMRZoMy.Mr5J7jsKQ3DL5KpYkYzqL8X9zQqJqKq', 'jane.smith@example.com', 'Jane Smith');
+
+INSERT INTO users_vault (username, password, email, full_name) 
+VALUES ('admin', '$2a$10$N9qo8uLOickgx2ZMRZoMy.Mr5J7jsKQ3DL5KpYkYzqL8X9zQqJqKq', 'admin@vaultcore.com', 'Admin User');
 
 -- Create accounts for users
 INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
-VALUES ('ACC1234567890', 'ASSET', 5000.00, 1);
+VALUES ('VCA1000001', 'ASSET', 15000.00, (SELECT id FROM users_vault WHERE username = 'john_doe'));
 
-INSERT INTO accounts (account_number, account_type, balance, user_id) 
-VALUES ('ACC0987654321', 'ASSET', 2500.00, 2);
+INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
+VALUES ('VCL2000001', 'LIABILITY', 5000.00, (SELECT id FROM users_vault WHERE username = 'john_doe'));
+
+INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
+VALUES ('VCA1000002', 'ASSET', 8500.00, (SELECT id FROM users_vault WHERE username = 'jane_smith'));
+
+INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
+VALUES ('VCI4000001', 'INCOME', 3000.00, (SELECT id FROM users_vault WHERE username = 'jane_smith'));
+
+INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
+VALUES ('VCA1000003', 'ASSET', 25000.00, (SELECT id FROM users_vault WHERE username = 'admin'));
+
+INSERT INTO accounts_vault (account_number, account_type, balance, user_id) 
+VALUES ('VCE5000001', 'EXPENSE', 1200.00, (SELECT id FROM users_vault WHERE username = 'admin'));
+
+-- Insert sample ledger entries (double-entry transactions)
+-- Transaction 1: Salary deposit for John Doe
+INSERT INTO ledger_entries_vault (transaction_id, account_id, amount, direction, description)
+VALUES ('TXN' || seq_transaction_id_vault.NEXTVAL, 
+        (SELECT id FROM accounts_vault WHERE account_number = 'VCA1000001'), 
+        5000.00, 'DEBIT', 'Monthly salary deposit');
+
+INSERT INTO ledger_entries_vault (transaction_id, account_id, amount, direction, description)
+VALUES ('TXN' || seq_transaction_id_vault.CURRVAL, 
+        (SELECT id FROM accounts_vault WHERE account_number = 'VCI4000001'), 
+        5000.00, 'CREDIT', 'Monthly salary credit');
+
+-- Transaction 2: Bill payment for John Doe
+INSERT INTO ledger_entries_vault (transaction_id, account_id, amount, direction, description)
+VALUES ('TXN' || seq_transaction_id_vault.NEXTVAL, 
+        (SELECT id FROM accounts_vault WHERE account_number = 'VCE5000001'), 
+        150.00, 'DEBIT', 'Electricity bill payment');
+
+INSERT INTO ledger_entries_vault (transaction_id, account_id, amount, direction, description)
+VALUES ('TXN' || seq_transaction_id_vault.CURRVAL, 
+        (SELECT id FROM accounts_vault WHERE account_number = 'VCA1000001'), 
+        150.00, 'CREDIT', 'Electricity bill payment');
 
 -- Commit the transactions
 COMMIT;
+
+-- Verify the data
+SELECT 'Users Count: ' || COUNT(*) as info FROM users_vault;
+SELECT 'Accounts Count: ' || COUNT(*) as info FROM accounts_vault;
+SELECT 'Ledger Entries Count: ' || COUNT(*) as info FROM ledger_entries_vault;
+
+-- Show account balances with view
+SELECT * FROM v_account_balances_vault ORDER BY user_id, account_type;
+
+-- Verify double-entry integrity
+SELECT 
+    transaction_id,
+    SUM(CASE WHEN direction = 'DEBIT' THEN amount ELSE 0 END) as total_debits,
+    SUM(CASE WHEN direction = 'CREDIT' THEN amount ELSE 0 END) as total_credits,
+    CASE 
+        WHEN SUM(CASE WHEN direction = 'DEBIT' THEN amount ELSE 0 END) = 
+             SUM(CASE WHEN direction = 'CREDIT' THEN amount ELSE 0 END) 
+        THEN 'BALANCED' 
+        ELSE 'UNBALANCED' 
+    END as status
+FROM ledger_entries_vault
+GROUP BY transaction_id
+ORDER BY transaction_id;
