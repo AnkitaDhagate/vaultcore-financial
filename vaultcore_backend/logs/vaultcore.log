@@ -1,0 +1,2867 @@
+2026-03-05 11:01:01 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 16240 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:01:01 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:01:01 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:01:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:01:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:01:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:01:02 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 67 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:01:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:01:03 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:01:03 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:01:03 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:01:03 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1856 ms
+2026-03-05 11:01:03 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:01:03 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:01:03 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:01:03 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:01:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:01:04 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@453b8b31
+2026-03-05 11:01:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:01:04 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:01:04 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:01:05 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:01:05 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:01:05 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:01:06 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@27484e04, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5387d72c, org.springframework.security.web.context.SecurityContextHolderFilter@6b42de9b, org.springframework.security.web.header.HeaderWriterFilter@21d66b8b, org.springframework.security.web.authentication.logout.LogoutFilter@7cc52fb9, com.vaultcore.security.JwtAuthenticationFilter@cf3c7e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c3941cc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c5fa56f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@474b3dea, org.springframework.security.web.session.SessionManagementFilter@7926313b, org.springframework.security.web.access.ExceptionTranslationFilter@56065d57, org.springframework.security.web.access.intercept.AuthorizationFilter@7e5819d9]
+2026-03-05 11:01:06 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:01:06 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:01:06 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 5.787 seconds (process running for 8.117)
+2026-03-05 11:06:56 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:06:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:06:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:08:03 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 20968 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:08:03 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:08:03 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:08:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:08:03 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:08:03 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:08:03 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:08:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:08:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:08:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:08:04 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:08:04 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1222 ms
+2026-03-05 11:08:04 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:08:04 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:08:04 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:08:04 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:08:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:08:04 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b7a5408
+2026-03-05 11:08:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:08:04 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:08:05 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:08:05 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:08:05 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:08:06 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:08:06 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@58353acc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a96f6a2, org.springframework.security.web.context.SecurityContextHolderFilter@6d180f82, org.springframework.security.web.header.HeaderWriterFilter@4f322470, org.springframework.web.filter.CorsFilter@3805abcc, org.springframework.security.web.authentication.logout.LogoutFilter@72de6cd9, com.vaultcore.security.JwtAuthenticationFilter@16d63f4b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2be8683c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27cfdfd9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@656ba2b9, org.springframework.security.web.session.SessionManagementFilter@5e50cfd0, org.springframework.security.web.access.ExceptionTranslationFilter@7baa4163, org.springframework.security.web.access.intercept.AuthorizationFilter@3b9a230c]
+2026-03-05 11:08:06 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:08:06 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:08:06 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 3.977 seconds (process running for 4.769)
+2026-03-05 11:09:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:09:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:09:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:09:36 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 13792 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:09:36 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:09:36 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:09:36 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:09:36 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:09:37 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:09:37 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:09:38 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:09:38 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:09:38 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:09:38 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:09:38 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1299 ms
+2026-03-05 11:09:38 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:09:38 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:09:38 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:09:38 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:09:38 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:09:38 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@139e1559
+2026-03-05 11:09:38 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:09:38 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:09:39 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:09:39 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:09:40 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:09:40 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:09:42 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6fce01a0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28d9ec79, org.springframework.security.web.context.SecurityContextHolderFilter@5989c938, org.springframework.security.web.header.HeaderWriterFilter@14e308ef, org.springframework.web.filter.CorsFilter@7db4a63c, org.springframework.security.web.authentication.logout.LogoutFilter@115b24da, com.vaultcore.security.JwtAuthenticationFilter@62eb2921, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@780c297f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e6a2354, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f4f6d6b, org.springframework.security.web.session.SessionManagementFilter@6211889c, org.springframework.security.web.access.ExceptionTranslationFilter@311ffcc5, org.springframework.security.web.access.intercept.AuthorizationFilter@4246ad9b]
+2026-03-05 11:09:43 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:09:43 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:09:43 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 6.782 seconds (process running for 7.237)
+2026-03-05 11:18:45 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:18:45 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:18:45 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:24:44 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 21520 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:24:44 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:24:44 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:24:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:24:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:24:45 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:24:45 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:24:46 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:24:46 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:24:46 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:24:46 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:24:46 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1411 ms
+2026-03-05 11:24:46 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:24:46 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:24:46 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:24:46 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:24:46 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:24:47 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b7a5408
+2026-03-05 11:24:47 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:24:47 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:24:47 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:24:47 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:24:48 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:24:48 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:24:48 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3e85968e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d0dfd89, org.springframework.security.web.context.SecurityContextHolderFilter@d21a387, org.springframework.security.web.header.HeaderWriterFilter@6a9882ed, org.springframework.web.filter.CorsFilter@325dfdc8, org.springframework.security.web.authentication.logout.LogoutFilter@294f1289, com.vaultcore.security.JwtAuthenticationFilter@16d63f4b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6da5b43d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3efd6e0e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58353acc, org.springframework.security.web.session.SessionManagementFilter@1e18bee7, org.springframework.security.web.access.ExceptionTranslationFilter@308d677, org.springframework.security.web.access.intercept.AuthorizationFilter@629ce0d9]
+2026-03-05 11:24:49 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:24:49 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:24:49 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 4.595 seconds (process running for 5.02)
+2026-03-05 11:25:35 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 11:25:35 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 11:25:35 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-03-05 11:28:18 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:28:18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:28:18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:35:57 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 12456 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:35:57 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:35:57 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:35:57 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:35:57 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:35:58 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:35:58 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:35:58 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:35:58 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:35:58 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:35:58 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:35:58 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1203 ms
+2026-03-05 11:35:58 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:35:58 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:35:58 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:35:59 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:35:59 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:35:59 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@21492065
+2026-03-05 11:35:59 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:35:59 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:35:59 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:35:59 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:36:00 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:36:00 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:36:00 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@585d801c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@462cfe5f, org.springframework.security.web.context.SecurityContextHolderFilter@25856659, org.springframework.security.web.header.HeaderWriterFilter@27eb826f, org.springframework.web.filter.CorsFilter@62cbd9f8, org.springframework.security.web.authentication.logout.LogoutFilter@5990bd56, com.vaultcore.security.JwtAuthenticationFilter@2105f5b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b3212cc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@52db49a0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64c26587, org.springframework.security.web.session.SessionManagementFilter@39b069a1, org.springframework.security.web.access.ExceptionTranslationFilter@4846f620, org.springframework.security.web.access.intercept.AuthorizationFilter@48553bd8]
+2026-03-05 11:36:01 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:36:01 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:36:01 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 3.951 seconds (process running for 4.336)
+2026-03-05 11:36:47 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 11:36:47 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 11:36:47 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-03-05 11:38:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:38:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:38:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:43:34 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 13840 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:43:34 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:43:34 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:43:34 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:43:34 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:43:34 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:43:34 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:43:35 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:43:35 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:43:35 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:43:35 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:43:35 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1139 ms
+2026-03-05 11:43:35 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:43:35 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:43:35 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:43:35 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:43:35 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:43:36 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c0e3673
+2026-03-05 11:43:36 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:43:36 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:43:36 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:43:36 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:43:37 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:43:37 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:43:37 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@e2acc64, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1da97ddf, org.springframework.security.web.context.SecurityContextHolderFilter@30fcead5, org.springframework.security.web.header.HeaderWriterFilter@d21a387, org.springframework.web.filter.CorsFilter@abd1ad9, org.springframework.security.web.authentication.logout.LogoutFilter@3b9a230c, com.vaultcore.security.JwtAuthenticationFilter@4235a57a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1313c058, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3567e2f7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@140ae1fd, org.springframework.security.web.session.SessionManagementFilter@72175830, org.springframework.security.web.access.ExceptionTranslationFilter@1e18bee7, org.springframework.security.web.access.intercept.AuthorizationFilter@6baba062]
+2026-03-05 11:43:37 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:43:37 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api'
+2026-03-05 11:43:37 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 3.836 seconds (process running for 4.231)
+2026-03-05 11:44:26 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 11:44:26 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 11:44:26 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-03-05 11:46:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:46:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 11:46:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 11:52:54 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 23452 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 11:52:54 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 11:52:54 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 11:52:54 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 11:52:54 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 11:52:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 11:52:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 4 JPA repository interfaces.
+2026-03-05 11:52:55 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 11:52:55 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 11:52:55 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 11:52:55 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-05 11:52:55 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1244 ms
+2026-03-05 11:52:55 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 11:52:55 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 11:52:55 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 11:52:56 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 11:52:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 11:52:56 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@21492065
+2026-03-05 11:52:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 11:52:56 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 11:52:56 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 11:52:56 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 11:52:57 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 11:52:57 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 11:52:57 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@62cbd9f8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64c26587, org.springframework.security.web.context.SecurityContextHolderFilter@5d7dfa80, org.springframework.security.web.header.HeaderWriterFilter@770306ff, org.springframework.web.filter.CorsFilter@50ab4463, org.springframework.security.web.authentication.logout.LogoutFilter@16a9394b, com.vaultcore.security.JwtAuthenticationFilter@2105f5b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ca89664, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@57f566f3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7154862f, org.springframework.security.web.session.SessionManagementFilter@29adf6ca, org.springframework.security.web.access.ExceptionTranslationFilter@7392190, org.springframework.security.web.access.intercept.AuthorizationFilter@18279c8e]
+2026-03-05 11:52:58 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 11:52:58 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2026-03-05 11:52:58 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 3.958 seconds (process running for 4.363)
+2026-03-05 11:55:25 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 11:55:25 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 11:55:25 [http-nio-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/register
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/register
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.User */insert 
+    into
+        users (created_at,email,password,phone,role,username) 
+    values
+        (?,?,?,?,?,?)
+2026-03-05 11:55:25 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:55:42 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2026-03-05 11:58:45 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2026-03-05 11:59:03 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2026-03-05 11:59:08 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2026-03-05 11:59:21 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 11:59:39 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:05:03 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 12:05:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 12:05:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 12:32:16 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 16784 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 12:32:16 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 12:32:16 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 12:32:16 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 12:32:16 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 12:32:17 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 12:32:17 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 41 ms. Found 4 JPA repository interfaces.
+2026-03-05 12:32:17 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 12:32:17 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 12:32:17 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 12:32:18 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-05 12:32:18 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1152 ms
+2026-03-05 12:32:18 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 12:32:18 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 12:32:18 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 12:32:18 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 12:32:18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 12:32:18 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@309ccc56
+2026-03-05 12:32:18 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 12:32:18 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 12:32:19 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 12:32:19 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 12:32:19 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 12:32:19 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 12:32:20 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6430f0a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@719a92c9, org.springframework.security.web.context.SecurityContextHolderFilter@48d781fb, org.springframework.security.web.header.HeaderWriterFilter@66ebcdb7, org.springframework.web.filter.CorsFilter@66eeeaaf, org.springframework.security.web.authentication.logout.LogoutFilter@28b1ceb1, com.vaultcore.security.JwtAuthenticationFilter@2d694708, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58afcf0c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4eced00d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f00aece, org.springframework.security.web.session.SessionManagementFilter@56c16bb6, org.springframework.security.web.access.ExceptionTranslationFilter@189da68d, org.springframework.security.web.access.intercept.AuthorizationFilter@34ddf3d0]
+2026-03-05 12:32:20 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 12:32:20 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2026-03-05 12:32:20 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 3.839 seconds (process running for 4.222)
+2026-03-05 12:33:24 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 12:33:24 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 12:33:24 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2026-03-05 12:33:24 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/3
+2026-03-05 12:33:24 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/3
+2026-03-05 12:33:24 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:25 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:25 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:25 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:25 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:25 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:25 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:25 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:25 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:25 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:37 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:37 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:37 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:37 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/MSFT
+2026-03-05 12:33:37 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:37 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/MSFT
+2026-03-05 12:33:37 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 12:33:37 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:37 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:37 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/MSFT
+2026-03-05 12:33:37 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:37 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:37 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:33:37 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:37 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:40 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:44 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:44 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:44 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:44 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:44 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:44 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:44 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:44 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:44 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:44 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:47 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:47 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:47 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:47 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:47 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:33:47 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:33:47 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:33:47 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:33:47 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:33:47 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:29 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:34:29 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:29 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:34:29 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:29 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 12:34:29 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/MSFT
+2026-03-05 12:34:29 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:29 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:29 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 12:34:29 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:29 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/MSFT
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:29 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:34:29 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:31 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/GOOGL
+2026-03-05 12:34:31 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/GOOGL
+2026-03-05 12:34:31 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:31 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/GOOGL
+2026-03-05 12:34:31 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:32 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:34:32 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:32 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:34:32 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:33 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AMZN
+2026-03-05 12:34:33 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AMZN
+2026-03-05 12:34:33 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:33 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AMZN
+2026-03-05 12:34:34 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:37 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/MSFT
+2026-03-05 12:34:37 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:37 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/MSFT
+2026-03-05 12:34:37 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:38 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/GOOGL
+2026-03-05 12:34:38 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:38 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/GOOGL
+2026-03-05 12:34:38 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:41 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:34:41 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:41 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:34:41 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:46 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 12:34:46 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:46 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 12:34:46 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:50 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AMZN
+2026-03-05 12:34:50 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:50 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AMZN
+2026-03-05 12:34:50 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:34:55 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AMZN
+2026-03-05 12:34:55 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:34:55 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AMZN
+2026-03-05 12:34:55 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:00 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AMZN
+2026-03-05 12:35:00 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:00 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AMZN
+2026-03-05 12:35:00 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:01 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:01 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:01 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:01 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:01 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:01 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:01 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:01 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:01 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:01 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:02 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:02 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:02 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:02 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:02 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:02 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:02 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:02 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:02 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:02 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:21 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2026-03-05 12:35:21 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 12:35:21 [http-nio-8081-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 12:35:21 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 12:35:21 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:22 [http-nio-8081-exec-4] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 12:35:22 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:22 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:23 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:23 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:23 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:23 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:23 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:23 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/3
+2026-03-05 12:35:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:23 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/3
+2026-03-05 12:35:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:35:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:35:56 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/register
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/register
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/register
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.User */insert 
+    into
+        users (created_at,email,password,phone,role,username) 
+    values
+        (?,?,?,?,?,?)
+2026-03-05 12:35:56 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2026-03-05 12:36:12 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:19 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:20 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:20 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:36:20 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:20 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:20 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 12:36:20 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:36:20 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:23 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 12:36:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:23 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 12:36:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:36:23 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:36:23 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 12:36:23 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 12:36:23 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 12:36:23 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        a1_0.id,
+        a1_0.account_number,
+        a1_0.account_type,
+        a1_0.balance,
+        a1_0.created_at,
+        a1_0.user_id 
+    from
+        accounts a1_0 
+    where
+        a1_0.user_id=?
+2026-03-05 12:36:23 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 12:43:44 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 12:43:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 12:43:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
+2026-03-05 13:47:35 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Starting VaultcoreApplication using Java 21.0.10 with PID 24360 (D:\Project 1\vaultcore_backend\target\classes started by dhaga in D:\Project 1\vaultcore_backend)
+2026-03-05 13:47:35 [restartedMain] DEBUG com.vaultcore.VaultcoreApplication - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-03-05 13:47:35 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-05 13:47:35 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-05 13:47:35 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-05 13:47:36 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-05 13:47:36 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+2026-03-05 13:47:36 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-03-05 13:47:36 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-05 13:47:36 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-05 13:47:37 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-05 13:47:37 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1474 ms
+2026-03-05 13:47:37 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-05 13:47:37 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-05 13:47:37 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-05 13:47:37 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-05 13:47:37 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Starting...
+2026-03-05 13:47:37 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - VaultCoreHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@755cf5f1
+2026-03-05 13:47:37 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Start completed.
+2026-03-05 13:47:37 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-05 13:47:38 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-05 13:47:38 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 13:47:38 [restartedMain] DEBUG c.v.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-05 13:47:38 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-05 13:47:39 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@403dc9fb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26165b03, org.springframework.security.web.context.SecurityContextHolderFilter@1e5f6211, org.springframework.security.web.header.HeaderWriterFilter@5f08c22, org.springframework.web.filter.CorsFilter@5c176f45, org.springframework.security.web.authentication.logout.LogoutFilter@7d7e0790, com.vaultcore.security.JwtAuthenticationFilter@35519d61, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@68dd9f6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@51b605b1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@494a760c, org.springframework.security.web.session.SessionManagementFilter@3545253f, org.springframework.security.web.access.ExceptionTranslationFilter@ebe0893, org.springframework.security.web.access.intercept.AuthorizationFilter@5d49c7f6]
+2026-03-05 13:47:39 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-05 13:47:39 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2026-03-05 13:47:39 [restartedMain] INFO  com.vaultcore.VaultcoreApplication - Started VaultcoreApplication in 4.627 seconds (process running for 5.476)
+2026-03-05 13:48:35 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-05 13:48:35 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-05 13:48:35 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2026-03-05 13:48:35 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/4
+2026-03-05 13:48:35 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/user/4
+2026-03-05 13:48:35 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:48:36 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:48:36 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:48:36 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:48:36 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:48:37 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:48:37 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:48:37 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:48:37 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:48:37 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:17 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2026-03-05 13:49:17 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 13:49:17 [http-nio-8081-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 13:49:17 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 13:49:18 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:18 [http-nio-8081-exec-6] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 13:49:18 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:18 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:19 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:49:19 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:19 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:49:19 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:49:19 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:19 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:49:19 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:19 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:49:19 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:49:19 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:21 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:49:21 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:21 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:49:21 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:49:21 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:21 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:49:21 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/accounts/others/4
+2026-03-05 13:49:21 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/others/4
+2026-03-05 13:49:21 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:21 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:49:21 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/others/4
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id != :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id<>?
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:49:21 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/others/4
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/others/4
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id != :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id<>?
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:49:22 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:17 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/register
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/register
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/register
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.User */insert 
+    into
+        users (created_at,email,password,phone,role,username) 
+    values
+        (?,?,?,?,?,?)
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.Account */insert 
+    into
+        accounts (account_number,account_type,balance,created_at,user_id) 
+    values
+        (?,?,?,?,?)
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.Account */insert 
+    into
+        accounts (account_number,account_type,balance,created_at,user_id) 
+    values
+        (?,?,?,?,?)
+2026-03-05 13:50:17 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:32 [http-nio-8081-exec-7] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:33 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:33 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:33 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:33 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:33 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:33 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:33 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:33 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:33 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:33 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:40 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:40 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:40 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:40 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:40 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/others/4
+2026-03-05 13:50:40 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/others/4
+2026-03-05 13:50:40 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id != :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id<>?
+2026-03-05 13:50:40 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/others/4
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/others/4
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id != :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id<>?
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-05 13:50:40 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:47 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:47 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:47 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:47 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:47 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:47 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:47 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:47 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:47 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:47 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:49 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:49 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:49 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:49 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:49 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks
+2026-03-05 13:50:49 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/MSFT
+2026-03-05 13:50:49 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:49 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/MSFT
+2026-03-05 13:50:49 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:49 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/MSFT
+2026-03-05 13:50:49 [http-nio-8081-exec-10] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:49 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:49 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 13:50:49 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:49 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:50 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/GOOGL
+2026-03-05 13:50:50 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/GOOGL
+2026-03-05 13:50:50 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:50 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/GOOGL
+2026-03-05 13:50:51 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:52 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AAPL
+2026-03-05 13:50:52 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:52 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AAPL
+2026-03-05 13:50:52 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:54 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/stocks/AMZN
+2026-03-05 13:50:54 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/stocks/AMZN
+2026-03-05 13:50:54 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:54 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/stocks/AMZN
+2026-03-05 13:50:54 [http-nio-8081-exec-2] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:57 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:57 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:57 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:57 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:57 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:50:57 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/accounts/user/4
+2026-03-05 13:50:57 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-03-05 13:50:57 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/accounts/user/4
+2026-03-05 13:50:57 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        a 
+    FROM
+        Account a 
+    WHERE
+        a.user.id = :userId */ select
+            a1_0.id,
+            a1_0.account_number,
+            a1_0.account_type,
+            a1_0.balance,
+            a1_0.created_at,
+            a1_0.user_id 
+        from
+            accounts a1_0 
+        where
+            a1_0.user_id=?
+2026-03-05 13:50:57 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.vaultcore.model.AuditLog */insert 
+    into
+        audit_log (action,created_at,ip_address,method,parameters,result,username) 
+    values
+        (?,?,?,?,?,?,?)
+2026-03-05 13:51:30 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-05 13:51:30 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown initiated...
+2026-03-05 13:51:30 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - VaultCoreHikariCP - Shutdown completed.
