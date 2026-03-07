@@ -16,12 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-/**
- * ✅ FIXES APPLIED:
- * 1. shouldNotFilter() correctly skips /api/auth/** and OPTIONS — no token needed there
- * 2. Returns clean JSON {"message":"..."} on all 401 errors (matches frontend error parsing)
- * 3. Handles null/missing/malformed token gracefully with proper HTTP 401
- */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
@@ -31,16 +25,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    /**
-     * ✅ Skip JWT validation entirely for:
-     * - /api/auth/** (login, register, test)
-     * - OPTIONS preflight requests (CORS)
-     * - /api/public/** (public endpoints)
-     * - /actuator/** (health checks)
-     *
-     * Since context-path is REMOVED from application.properties,
-     * controllers at @RequestMapping("/api/auth") are served at /api/auth/
-     */
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path   = request.getRequestURI();
@@ -107,14 +91,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // ✅ Step 4: Valid — continue to controller
         chain.doFilter(request, response);
     }
 
-    /**
-     * ✅ Always returns {"message": "..."} — matches what Login.js reads:
-     *    error.response?.data?.message
-     */
+
     private void sendError(HttpServletResponse response, int status, String message)
             throws IOException {
         response.setStatus(status);

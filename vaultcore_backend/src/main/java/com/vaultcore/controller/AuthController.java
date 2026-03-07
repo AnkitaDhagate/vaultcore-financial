@@ -24,23 +24,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * ✅ FIXES:
- * 1. Login returns userId in JwtResponse → frontend stores it → accounts load correctly
- * 2. Register auto-creates SAVINGS + CHECKING accounts for every new user
- *    → Fixes "No accounts found" on Transfer/Dashboard for new users
- * 3. Proper 401 for bad credentials, consistent {"message":"..."} error shape
- * 4. Duplicate username + email check on register
- */
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(
         origins = "http://localhost:3000",
         allowedHeaders = "*",
-        methods = {
-                RequestMethod.GET, RequestMethod.POST,
-                RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS
-        }
+        methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS }
 )
 public class AuthController {
 
@@ -55,99 +44,85 @@ public class AuthController {
         return ResponseEntity.ok("Auth controller is reachable!");
     }
 
-    // POST http://localhost:8081/api/auth/login
+    // POST /api/auth/login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-
         if (loginRequest.getUsername() == null || loginRequest.getUsername().isBlank())
-            return ResponseEntity.badRequest().body(errorResponse("Username is required"));
+            return ResponseEntity.badRequest().body(err("Username is required"));
         if (loginRequest.getPassword() == null || loginRequest.getPassword().isBlank())
-            return ResponseEntity.badRequest().body(errorResponse("Password is required"));
+            return ResponseEntity.badRequest().body(err("Password is required"));
 
         try {
-            Authentication authentication = authenticationManager.authenticate(
+            Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            loginRequest.getUsername().trim(),
-                            loginRequest.getPassword()
+                            loginRequest.getUsername().trim(), loginRequest.getPassword()
                     )
             );
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(auth);
 
             String jwt          = jwtUtil.generateToken(loginRequest.getUsername().trim());
             String refreshToken = jwtUtil.generateRefreshToken(loginRequest.getUsername().trim());
 
-            User user = userRepository
-                    .findByUsername(loginRequest.getUsername().trim())
+            User user = userRepository.findByUsername(loginRequest.getUsername().trim())
                     .orElseThrow(() -> new RuntimeException("User not found"));
+
+            // ✅ Auto-provision accounts on login if user has none (fixes existing users like ankita)
+            if (accountRepository.countByUser_Id(user.getId()) == 0) {
+                createDefaultAccounts(user);
+            }
 
             return ResponseEntity.ok(new JwtResponse(
                     jwt, refreshToken, user.getId(), user.getUsername(), user.getRole()
             ));
 
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(errorResponse("Invalid username or password"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err("Invalid username or password"));
         } catch (DisabledException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(errorResponse("Account is disabled"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err("Account is disabled"));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(errorResponse("Login failed: " + e.getMessage()));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err("Login failed: " + e.getMessage()));
         }
     }
 
-    // POST http://localhost:8081/api/auth/register
+    // POST /api/auth/register
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-
         if (user.getUsername() == null || user.getUsername().isBlank())
-            return ResponseEntity.badRequest().body(errorResponse("Username is required"));
+            return ResponseEntity.badRequest().body(err("Username is required"));
         if (user.getPassword() == null || user.getPassword().isBlank())
-            return ResponseEntity.badRequest().body(errorResponse("Password is required"));
+            return ResponseEntity.badRequest().body(err("Password is required"));
         if (user.getEmail() == null || user.getEmail().isBlank())
-            return ResponseEntity.badRequest().body(errorResponse("Email is required"));
+            return ResponseEntity.badRequest().body(err("Email is required"));
         if (user.getPassword().length() < 6)
-            return ResponseEntity.badRequest().body(errorResponse("Password must be at least 6 characters"));
+            return ResponseEntity.badRequest().body(err("Password must be at least 6 characters"));
         if (!user.getEmail().contains("@"))
-            return ResponseEntity.badRequest().body(errorResponse("Invalid email address"));
+            return ResponseEntity.badRequest().body(err("Invalid email address"));
 
         try {
             if (userRepository.findByUsername(user.getUsername().trim()).isPresent())
-                return ResponseEntity.badRequest()
-                        .body(errorResponse("Username already exists. Please choose a different username"));
-
+                return ResponseEntity.badRequest().body(err("Username already exists"));
             if (userRepository.findByEmail(user.getEmail().trim()).isPresent())
-                return ResponseEntity.badRequest()
-                        .body(errorResponse("Email already registered. Please login or use a different email"));
+                return ResponseEntity.badRequest().body(err("Email already registered"));
 
             user.setUsername(user.getUsername().trim());
             user.setEmail(user.getEmail().trim());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRole("USER");
-            User savedUser = userRepository.save(user);
 
-            // ✅ Auto-create SAVINGS + CHECKING accounts so Transfer page is never empty
-            createDefaultAccounts(savedUser);
+            User saved = userRepository.save(user);
+            createDefaultAccounts(saved);   // ✅ Create SAVINGS + CHECKING immediately
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("message", "Registration successful! Your Savings and Checking accounts have been created.");
-            response.put("userId", savedUser.getId());
-            response.put("username", savedUser.getUsername());
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+            Map<String, Object> res = new HashMap<>();
+            res.put("message", "Registration successful! Your Savings ($1,000) and Checking ($500) accounts are ready.");
+            res.put("userId",   saved.getId());
+            res.put("username", saved.getUsername());
+            return ResponseEntity.status(HttpStatus.CREATED).body(res);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(errorResponse("Registration failed: " + e.getMessage()));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err("Registration failed: " + e.getMessage()));
         }
     }
 
-    /**
-     * Every new user gets:
-     *  - SAVINGS account with $1,000.00 starting balance
-     *  - CHECKING account with $500.00 starting balance
-     * Account number format: VC{userId}{TYPE}{4-char random suffix}
-     */
     private void createDefaultAccounts(User user) {
         String uid    = String.valueOf(user.getId());
         String suffix = UUID.randomUUID().toString().substring(0, 4).toUpperCase();
@@ -167,9 +142,7 @@ public class AuthController {
         accountRepository.save(checking);
     }
 
-    private Map<String, String> errorResponse(String message) {
-        Map<String, String> error = new HashMap<>();
-        error.put("message", message);
-        return error;
+    private Map<String, String> err(String msg) {
+        return Map.of("message", msg);
     }
 }

@@ -1,5 +1,6 @@
 package com.vaultcore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "accounts")
 @Data
 public class Account {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,8 +18,11 @@ public class Account {
     @Column(name = "account_number", unique = true, nullable = false)
     private String accountNumber;
 
-    @ManyToOne
+    // ✅ FIX: @JsonIgnoreProperties prevents circular JSON serialization (User → Accounts → User → ...)
+    // We keep "id" and "username" exposed so frontend can show recipient name in Transfer dropdown
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"password", "email", "phone", "role", "createdAt", "hibernateLazyInitializer"})
     private User user;
 
     @Column(name = "account_type")

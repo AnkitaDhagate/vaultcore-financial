@@ -13,15 +13,18 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findByAccountNumber(String accountNumber);
 
-    // ✅ FIX: Account has @ManyToOne User user — so the correct JPQL is user.id not userId
-    // Old: findByUserId(Long userId)  → generated query: WHERE user_id = ?  (works at DB level)
-    // But safer to be explicit with the join:
-    @Query("SELECT a FROM Account a WHERE a.user.id = :userId")
-    List<Account> findByUserId(@Param("userId") Long userId);
+    // ✅ CRITICAL FIX: Account has @ManyToOne User user (not a userId field).
+    // Spring Data JPA traverses the relationship with underscore notation: user_Id → user.id
+    // Old: findByUserId(Long userId) → Spring cannot resolve 'userId' property → returns empty list!
+    // Fixed: findByUser_Id(Long userId) → Spring generates: WHERE u.id = ? via JOIN
+    List<Account> findByUser_Id(Long userId);
 
-    // Find all accounts EXCEPT those belonging to a specific user (for "To Account" dropdown)
+    // ✅ NEW: All accounts NOT belonging to a specific user → used for Transfer "To Account" dropdown
     @Query("SELECT a FROM Account a WHERE a.user.id != :userId")
     List<Account> findAllExceptUser(@Param("userId") Long userId);
+
+    // Count accounts for a user → used to check if provisioning is needed
+    long countByUser_Id(Long userId);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT a FROM Account a WHERE a.accountNumber = :accountNumber")

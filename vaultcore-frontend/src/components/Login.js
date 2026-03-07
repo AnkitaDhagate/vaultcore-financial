@@ -1,4 +1,3 @@
-// frontend/src/components/Login.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -181,7 +180,7 @@ function Login({ onLoginSuccess }) {
 
                         {isRegistering && (
                             <div style={S.info}>
-                                ✅ <strong>Accounts auto-created on registration:</strong> You'll get a <strong>Savings</strong> account ($1,000) and a <strong>Checking</strong> account ($500) ready to use immediately.
+                                ✅ <strong>Accounts auto-created on registration:</strong> You'll get a <strong>Savings</strong> account (₹1,000) and a <strong>Checking</strong> account (₹500) ready to use immediately.
                             </div>
                         )}
                     </div>

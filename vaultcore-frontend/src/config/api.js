@@ -1,5 +1,3 @@
-// src/config/api.js
-// Single source of truth for all API URLs
 const API_BASE_URL = 'http://localhost:8081/api';
 
 export const AUTH_URL      = `${API_BASE_URL}/auth`;       // /api/auth/login, /api/auth/register
