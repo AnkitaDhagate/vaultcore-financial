@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -22,16 +23,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * ✅ FIXES APPLIED:
- * 1. CORS configured properly via CorsConfigurationSource bean (not disabled)
- * 2. OPTIONS preflight requests permitted FIRST before any auth check
- * 3. /api/auth/** permitted without token
- * 4. Stateless session (JWT-based, no HttpSession)
- * 5. Removed duplicate WebMvcConfigurer CORS — only one CORS config needed
- */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity   // ✅ Week 4: Required for @PreAuthorize on AuditController
 public class SecurityConfig {
 
     @Autowired
@@ -42,28 +36,30 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
 
-                // ✅ Use our CorsConfigurationSource bean — do NOT disable CORS
+                // Use our CorsConfigurationSource bean
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-                // ✅ Stateless — JWT, no sessions
+                // Stateless — JWT, no sessions
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-                        // ✅ OPTIONS preflight MUST be first — browsers send this before every request
+                        // OPTIONS preflight MUST be first
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                        // ✅ Auth endpoints open — no token needed for login/register
+                        // Auth endpoints open
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        // ✅ Public endpoints
+                        // Public endpoints
                         .requestMatchers("/api/public/**").permitAll()
 
-                        // ✅ Everything else requires valid JWT
+                        // ✅ Week 4: /api/audit requires ADMIN (also enforced via @PreAuthorize)
+                        .requestMatchers("/api/audit/**").hasRole("ADMIN")
+
+                        // Everything else requires valid JWT
                         .anyRequest().authenticated()
                 )
 
-                // ✅ JWT filter runs before Spring's default auth filter
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -72,30 +68,18 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-
         config.setAllowCredentials(true);
-        // ✅ Must exactly match the origin React runs on
         config.setAllowedOrigins(List.of("http://localhost:3000"));
-
         config.setAllowedHeaders(Arrays.asList(
-                "Origin",
-                "Content-Type",
-                "Accept",
-                "Authorization",
-                "X-Requested-With",
-                "Access-Control-Request-Method",
+                "Origin", "Content-Type", "Accept", "Authorization",
+                "X-Requested-With", "Access-Control-Request-Method",
                 "Access-Control-Request-Headers"
         ));
-
-        config.setAllowedMethods(Arrays.asList(
-                "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
-        ));
-
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setExposedHeaders(Arrays.asList(
                 "Authorization",
-                "Content-Disposition"
+                "Content-Disposition"  // ✅ Needed for PDF download filename
         ));
-
         config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
