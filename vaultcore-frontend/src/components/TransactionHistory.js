@@ -1,15 +1,12 @@
-// frontend/src/components/TransactionHistory.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ACCOUNTS_URL } from '../config/api';
 
-// ✅ Format as Indian Rupees
 const formatINR = (amount) =>
     new Intl.NumberFormat('en-IN', {
         style: 'currency', currency: 'INR', minimumFractionDigits: 2
     }).format(amount);
 
-// Format date nicely
 const formatDate = (dateStr) => {
     const d = new Date(dateStr);
     return d.toLocaleString('en-IN', {
