@@ -1,945 +1,419 @@
-# 💎 VaultCore Financial Platform
+# 🏦 VaultCore Financial
 
-**A production-grade full-stack banking application** built with Spring Boot 3, React 19, and MySQL 8 — featuring JWT authentication, double-entry ledger accounting, real-time stock tracking, fraud detection with 2FA, and AOP-powered audit logging.
+> **Full-Stack Banking Application** — Spring Boot 3.1.5 · React 18 · MySQL 8  
+> All monetary values in **Indian Rupees ₹ (INR)**
+
+| | |
+|---|---|
+| **Version** | 1.0.0 (Week 4) |
+| **Backend** | Spring Boot 3.1.5 · Java 21 |
+| **Frontend** | React 18 · Bootstrap 5 |
+| **Database** | MySQL 8.0.45 |
+| **API** | http://localhost:8081 |
+| **UI** | http://localhost:3000 |
+| **Currency** | Indian Rupees ₹ (INR / en-IN) |
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#1-project-overview)
-2. [Architecture](#2-architecture)
-3. [Tech Stack](#3-tech-stack)
-4. [Project Structure](#4-project-structure)
-5. [Prerequisites](#5-prerequisites)
-6. [Database Setup](#6-database-setup)
-7. [Backend Installation & Configuration](#7-backend-installation--configuration)
-8. [Frontend Installation & Configuration](#8-frontend-installation--configuration)
-9. [Running the Application](#9-running-the-application)
-10. [API Reference](#10-api-reference)
-11. [Feature Walkthrough (Live Demo Guide)](#11-feature-walkthrough-live-demo-guide)
-12. [Security Architecture](#12-security-architecture)
-13. [Fraud Detection & 2FA](#13-fraud-detection--2fa)
-14. [Double-Entry Ledger System](#14-double-entry-ledger-system)
-15. [Concurrency & Transaction Isolation](#15-concurrency--transaction-isolation)
-16. [Environment Configuration Reference](#16-environment-configuration-reference)
-17. [Sample Data & Test Credentials](#17-sample-data--test-credentials)
-18. [Troubleshooting](#18-troubleshooting)
+- [Project Overview](#-project-overview)
+- [Feature Summary by Week](#feature-summary-by-week)
+- [Architecture](#-architecture)
+- [Database Schema](#-database-schema)
+- [Prerequisites](#-prerequisites)
+- [Setup & Installation](#-setup--installation)
+- [API Endpoints](#-api-endpoints)
+- [Key Features](#-key-features)
+- [Security Notes](#-security-notes)
+- [Troubleshooting](#-troubleshooting)
+- [Quick-Start Checklist](#-quick-start-checklist)
 
 ---
 
-## 1. Project Overview
+## 📖 Project Overview
 
-VaultCore is a secure, feature-complete digital banking platform that demonstrates enterprise-level backend engineering patterns alongside a polished React frontend. It is designed to serve as both a working prototype and a reference implementation for real-world financial systems.
+VaultCore Financial is a full-stack banking simulation application built across four development weeks. It demonstrates production-grade patterns including:
 
-### Key Capabilities
+- **Double-entry ledger** accounting (immutable, trigger-protected)
+- **JWT-based authentication** with Spring Security
+- **Fraud detection** with configurable threshold and 2FA OTP challenge flow
+- **Real-time stock portfolio** visualization with latency monitoring
+- **AspectJ audit logging** via `@Around` AOP advice
+- **PDF statement generation** using iText 7
 
-| Feature | Details |
-|---|---|
-| **Authentication** | JWT access tokens + refresh tokens, BCrypt password hashing |
-| **Account Management** | Auto-provisioned Savings & Checking accounts on registration |
-| **Fund Transfers** | Between any two accounts with full double-entry ledger recording |
-| **Fraud Detection** | Configurable threshold triggers a 6-digit OTP challenge (2FA) |
-| **Transaction History** | Full immutable ledger with search, filter by DEBIT/CREDIT, and sort |
-| **Stock Portfolio** | Live simulated price feed with real-time Recharts line chart |
-| **Audit Logging** | AspectJ AOP intercepts every service call and logs to DB asynchronously |
-| **Currency** | All monetary values displayed in Indian Rupees (₹, INR) |
+> All monetary values use the `en-IN` locale for proper Indian number formatting (e.g., ₹1,00,000.00 = One Lakh)
 
 ---
 
-## 2. Architecture
+## Feature Summary by Week
+
+| Week | Theme | Features Delivered |
+|------|-------|-------------------|
+| **Week 1** | Core Banking | User auth (JWT), account management, double-entry ledger, fund transfers |
+| **Week 2** | Fraud Detection | Configurable threshold, OTP 2FA challenge flow, `TwoFactorChallenge` table, mock SMS |
+| **Week 3** | Trading & APIs | Mock Stock REST service, live Portfolio dashboard, Recharts visualization, <300ms latency monitor |
+| **Week 4** | Audit & Compliance | AspectJ `AuditAspect` (`@Around`), `audit_log` table, AuditLog UI, iText 7 PDF statement generator |
+
+---
+
+## 🏗 Architecture
+
+### Technology Stack
+
+| Layer | Technology | Details |
+|-------|-----------|---------|
+| Backend Framework | Spring Boot 3.1.5 | Java 21, virtual threads (`spring.threads.virtual.enabled=true`) |
+| Security | Spring Security + JWT | jjwt 0.11.5, stateless sessions, BCrypt password hashing |
+| Persistence | Spring Data JPA | Hibernate 6, MySQL dialect, HikariCP pool (max 20) |
+| AOP / Audit | Spring AOP (AspectJ) | `@Around` advice on all controllers, async DB logging |
+| PDF Generation | iText 7.2.5 | `kernel` + `layout` + `io` modules, password-protected output |
+| Frontend Framework | React 18 | React Router v6, Bootstrap 5, Axios |
+| Charts | Recharts | `AreaChart` (stock prices), `LineChart` (latency monitor) |
+| Database | MySQL 8.0.45 | Immutable ledger triggers, CHECK constraints |
+
+### Backend Package Structure
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    React Frontend (Port 3000)            │
-│  Login  │  Dashboard  │  Transfer  │  History  │  Portfolio │
-└──────────────────────┬──────────────────────────────────┘
-                       │  HTTP/REST (Axios, JWT Bearer Token)
-                       │  Proxy → localhost:8081/api
-┌──────────────────────▼──────────────────────────────────┐
-│              Spring Boot Backend (Port 8081)             │
-│                                                          │
-│  ┌─────────────┐  ┌──────────────┐  ┌────────────────┐  │
-│  │AuthController│  │TransferCtrl  │  │ StockController │  │
-│  └──────┬──────┘  └──────┬───────┘  └───────┬────────┘  │
-│         │                │                   │           │
-│  ┌──────▼──────────────────▼───────────────────▼──────┐  │
-│  │          Service Layer                              │  │
-│  │  TransferService (SERIALIZABLE isolation + locks)   │  │
-│  │  FraudDetectionService (OTP / 2FA)                 │  │
-│  │  StockService (simulated live prices)               │  │
-│  └──────────────────────┬──────────────────────────────┘  │
-│                         │                                 │
-│  ┌──────────────────────▼──────────────────────────────┐  │
-│  │  AuditAspect (AspectJ AOP — @Around all services)   │  │
-│  └──────────────────────┬──────────────────────────────┘  │
-│                         │                                 │
-│  ┌──────────────────────▼──────────────────────────────┐  │
-│  │  JPA Repositories → HikariCP → MySQL 8              │  │
-│  │  Tables: users, accounts, ledger, two_factor_        │  │
-│  │          challenges, audit_log                      │  │
-│  └─────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────┘
+com.vaultcore/
+├── VaultcoreApplication.java
+├── aspect/
+│   └── AuditAspect.java               # @Around all controllers → audit_log
+├── config/
+│   └── CorsConfig.java                # CORS: http://localhost:3000
+├── controller/
+│   ├── AuthController.java            # POST /api/auth/login|register
+│   ├── AccountController.java         # GET  /api/accounts/user/{userId}
+│   ├── TransferController.java        # POST /api/transfers  (2FA flow)
+│   ├── StockController.java           # GET  /api/stocks  /api/stocks/{symbol}
+│   ├── StatementController.java       # GET  /api/statements/monthly → PDF
+│   └── AuditController.java           # GET  /api/audit
+├── service/
+│   ├── TransferService.java           # Double-entry, 2FA, virtual threads
+│   ├── FraudDetectionService.java     # Threshold check, OTP generation
+│   ├── StatementService.java          # iText 7 PDF builder
+│   ├── StockService.java              # Mock price generation
+│   └── CustomUserDetailsService.java
+├── security/
+│   ├── SecurityConfig.java
+│   ├── JwtUtil.java
+│   └── JwtAuthenticationFilter.java
+├── model/        Account · Ledger · User · TwoFactorChallenge · AuditLog
+├── repository/   (Spring Data JPA interfaces)
+└── dto/          LoginRequest · JwtResponse · TransferRequest
 ```
 
-### Request Flow (Fund Transfer)
+### Frontend Component Structure
 
 ```
-Frontend POST /api/transfers
-  → JwtAuthenticationFilter (validates Bearer token)
-    → TransferController.transferMoney()
-      → FraudDetectionService.checkAndChallenge()
-          IF amount > threshold → create OTP challenge → return 202
-          IF challengeId present → verifyChallenge()
-      → TransferService.transferMoney() [SERIALIZABLE + PESSIMISTIC_WRITE]
-          → Deduct fromAccount balance
-          → Add toAccount balance
-          → Write DEBIT ledger row
-          → Write CREDIT ledger row
-      → AuditAspect logs method + result asynchronously
-    ← 200 { transactionId }
+src/
+├── App.js                    # Router + auth guard
+├── config/api.js             # Base URLs (localhost:8081/api)
+└── components/
+    ├── Login.js              # JWT login + registration
+    ├── Navbar.js             # Navigation + logout
+    ├── Dashboard.js          # Account balances (₹ INR)
+    ├── Transfer.js           # Fund transfer + 2FA OTP modal
+    ├── Portfolio.js          # Live stocks, Recharts, latency badge
+    ├── TransactionHistory.js # Ledger view, filters
+    ├── MonthlyStatement.js   # PDF download (₹ INR)
+    └── AuditLog.js           # Admin audit trail viewer
 ```
 
 ---
 
-## 3. Tech Stack
+## 🗄 Database Schema
 
-### Backend
-
-| Component | Technology | Version |
-|---|---|---|
-| Framework | Spring Boot | 3.1.5 |
-| Language | Java | 21 LTS |
-| Security | Spring Security + JJWT | 0.11.5 |
-| ORM | Spring Data JPA / Hibernate | included in Boot 3.1.5 |
-| Database | MySQL | 8.0.45 |
-| Connection Pool | HikariCP | included in Boot 3.1.5 |
-| AOP | Spring AOP / AspectJ | included in Boot 3.1.5 |
-| Build Tool | Maven | 3.x |
-| Threading | Java 21 Virtual Threads | JEP 444 |
-| Utilities | Lombok | latest |
-
-### Frontend
-
-| Component | Technology | Version |
-|---|---|---|
-| Framework | React | 19.x |
-| Routing | React Router DOM | 7.x |
-| HTTP Client | Axios | 1.x |
-| UI Framework | Bootstrap | 5.3 |
-| Charts | Recharts | 3.x |
-| Build Tool | Create React App | 5.0.1 |
-
-### Database Schema
+### Tables
 
 | Table | Purpose |
-|---|---|
-| `users` | Stores registered user credentials and roles |
-| `accounts` | Savings & Checking accounts with real-time balance |
-| `ledger` | Immutable double-entry records for every transaction |
-| `two_factor_challenges` | OTP challenges for high-value transfer 2FA |
-| `audit_log` | AOP-generated audit trail of all service invocations |
+|-------|---------|
+| `users` | Authentication — username, BCrypt password, email, role (`USER`/`ADMIN`) |
+| `accounts` | Bank accounts — `account_number`, `balance DECIMAL(19,4)`, `account_type` (`SAVINGS`/`CHECKING`) |
+| `ledger` | Immutable double-entry journal — `DEBIT`/`CREDIT` pairs per `transaction_id`, UPDATE/DELETE blocked by triggers |
+| `two_factor_challenges` | OTP challenges for high-value transfers — status ENUM (`PENDING`/`VERIFIED`/`EXPIRED`/`FAILED`), 5-min expiry |
+| `audit_log` | AspectJ AOP trace — username, action, method, parameters, result, ip_address |
+
+### Key Constraints & Triggers
+
+- `accounts.balance` — `CHECK (balance >= 0)` prevents overdraft at DB level
+- `ledger.amount` — `CHECK (amount > 0)` positive-only amounts
+- `ledger` — `UNIQUE (transaction_id, entry_type)` — one DEBIT + one CREDIT per transaction
+- `prevent_ledger_update` trigger — `SIGNAL SQLSTATE '45000'` on any `UPDATE`
+- `prevent_ledger_delete` trigger — `SIGNAL SQLSTATE '45000'` on any `DELETE`
+
+### Sample Users
+
+> Password for all sample users: **`password`**
+
+| Username | Email | Role | Accounts |
+|----------|-------|------|----------|
+| `john_doe` | john@example.com | USER | ACC001 (₹5,000) · ACC002 (₹2,500) |
+| `jane_smith` | jane@example.com | USER | ACC003 (₹10,000) · ACC004 (₹3,000) |
+| `admin` | admin@vaultcore.com | ADMIN | — |
 
 ---
 
-## 4. Project Structure
+## ✅ Prerequisites
 
-```
-vaultcore/
-├── vaultcore-backend/                  # Spring Boot application
-│   ├── src/main/java/com/vaultcore/
-│   │   ├── VaultcoreApplication.java   # Entry point
-│   │   ├── aspect/
-│   │   │   └── AuditAspect.java        # AspectJ @Around audit logging
-│   │   ├── config/
-│   │   │   └── CorsConfig.java         # CORS configuration
-│   │   ├── controller/
-│   │   │   ├── AuthController.java     # /api/auth/login, /api/auth/register
-│   │   │   ├── AccountController.java  # /api/accounts/**
-│   │   │   ├── TransferController.java # /api/transfers
-│   │   │   └── StockController.java    # /api/stocks
-│   │   ├── dto/
-│   │   │   ├── JwtResponse.java        # Login response payload
-│   │   │   ├── LoginRequest.java       # Login request payload
-│   │   │   └── TransferRequest.java    # Transfer request payload
-│   │   ├── model/
-│   │   │   ├── User.java
-│   │   │   ├── Account.java
-│   │   │   ├── Ledger.java             # Immutable ledger entry
-│   │   │   ├── TwoFactorChallenge.java # 2FA OTP record
-│   │   │   └── AuditLog.java
-│   │   ├── repository/                 # Spring Data JPA interfaces
-│   │   ├── security/
-│   │   │   ├── JwtUtil.java            # Token generation & validation
-│   │   │   ├── JwtAuthenticationFilter.java
-│   │   │   ├── SecurityConfig.java     # HTTP security rules
-│   │   │   └── CustomUserDetails.java
-│   │   └── service/
-│   │       ├── TransferService.java    # Core transfer logic + ledger
-│   │       ├── FraudDetectionService.java
-│   │       ├── StockService.java       # Simulated price feed
-│   │       └── CustomUserDetailsService.java
-│   ├── src/main/resources/
-│   │   └── application.properties      # All configuration
-│   └── pom.xml
-│
-├── vaultcore-frontend/                 # React application
-│   ├── src/
-│   │   ├── App.js                      # Router + auth guard
-│   │   ├── config/
-│   │   │   └── api.js                  # Base URL constants
-│   │   └── components/
-│   │       ├── Login.js                # Sign in / Register UI
-│   │       ├── Navbar.js               # Navigation bar
-│   │       ├── Dashboard.js            # Account overview
-│   │       ├── Transfer.js             # Fund transfer + 2FA flow
-│   │       ├── TransactionHistory.js   # Ledger viewer with filters
-│   │       └── Portfolio.js            # Live stock chart
-│   ├── package.json
-│   └── public/
-│
-└── schema.sql                          # Database schema + seed data
-```
+| Tool | Version | Notes |
+|------|---------|-------|
+| Java JDK | 21+ | Virtual threads required |
+| Maven | 3.8+ | Or use included `./mvnw` wrapper |
+| MySQL | 8.0.45 | Database: `vaultcore_db` |
+| Node.js | 18+ | For React frontend |
+| npm | 9+ | Package manager |
 
 ---
 
-## 5. Prerequisites
+## 🚀 Setup & Installation
 
-Ensure all of the following are installed before proceeding:
-
-| Tool | Required Version | Check Command |
-|---|---|---|
-| Java JDK | 21 (LTS) | `java -version` |
-| Maven | 3.6+ | `mvn -version` |
-| Node.js | 18+ | `node -v` |
-| npm | 9+ | `npm -v` |
-| MySQL Server | 8.0+ | `mysql --version` |
-| Git | Any | `git --version` |
-
-> **Java 21 is mandatory.** The backend uses Virtual Threads (`spring.threads.virtual.enabled=true`), which is a Java 21 feature (JEP 444). The application will not compile on Java 17 or below.
-
----
-
-## 6. Database Setup
-
-### Step 1 — Start MySQL and connect as root
-
-```bash
-mysql -u root -p
-```
-
-### Step 2 — Create the database and dedicated user
+### 1. Database Setup
 
 ```sql
 CREATE DATABASE vaultcore_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 CREATE USER 'vaultcore_user'@'localhost' IDENTIFIED BY 'VaultCore@2026';
-
 GRANT ALL PRIVILEGES ON vaultcore_db.* TO 'vaultcore_user'@'localhost';
-
 FLUSH PRIVILEGES;
-
-EXIT;
 ```
 
-### Step 3 — Run the schema and seed data
+Then run the schema:
 
 ```bash
 mysql -u vaultcore_user -p vaultcore_db < schema.sql
 ```
 
-This creates five tables (`users`, `accounts`, `ledger`, `two_factor_challenges`, `audit_log`) and inserts three sample users with seeded accounts.
-
-### Step 4 — Verify
-
-```sql
-mysql -u vaultcore_user -p vaultcore_db
-
-SELECT username, email, role FROM users;
-SELECT account_number, account_type, balance FROM accounts;
-EXIT;
-```
-
-Expected output:
-
-```
-+------------+----------------------+-------+
-| username   | email                | role  |
-+------------+----------------------+-------+
-| john_doe   | john@example.com     | USER  |
-| jane_smith | jane@example.com     | USER  |
-| admin      | admin@vaultcore.com  | ADMIN |
-+------------+----------------------+-------+
-
-+----------------+--------------+-----------+
-| account_number | account_type | balance   |
-+----------------+--------------+-----------+
-| ACC001         | SAVINGS      | 5000.0000 |
-| ACC002         | CHECKING     | 2500.0000 |
-| ACC003         | SAVINGS      | 10000.0000|
-| ACC004         | CHECKING     | 3000.0000 |
-+----------------+--------------+-----------+
-```
-
----
-
-## 7. Backend Installation & Configuration
-
-### Step 1 — Clone / Extract the backend
+### 2. Backend Setup
 
 ```bash
-# If using the zip
-unzip vaultcore_backend.zip
 cd vaultcore_backend
+./mvnw spring-boot:run
+# Windows: mvnw.cmd spring-boot:run
 ```
 
-### Step 2 — Verify `application.properties`
+API starts at **http://localhost:8081**
 
-The file lives at `src/main/resources/application.properties`. The default values work out of the box if you followed the database setup above exactly.
+#### Key `application.properties` Values
 
-```properties
-# Server
-server.port=8081
+| Property | Default | Notes |
+|----------|---------|-------|
+| `server.port` | `8081` | |
+| `spring.datasource.url` | `jdbc:mysql://localhost:3306/vaultcore_db` | |
+| `spring.datasource.username` | `vaultcore_user` | |
+| `spring.datasource.password` | `VaultCore@2026` | Change in production |
+| `fraud.threshold` | `10000` | Transfers > ₹10,000 trigger 2FA |
+| `fraud.otp.expiry.minutes` | `5` | OTP validity window |
+| `fraud.sms-mock-enabled` | `true` | OTP printed to console |
+| `jwt.secret` | *(hardcoded)* | Use env var in production |
+| `jwt.expiration` | `86400000` | 24 hours in ms |
+| `spring.threads.virtual.enabled` | `true` | Java 21 virtual threads |
+| `spring.jackson.time-zone` | `Asia/Kolkata` | |
 
-# Database — update password if you used a different one
-spring.datasource.url=jdbc:mysql://localhost:3306/vaultcore_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-spring.datasource.username=vaultcore_user
-spring.datasource.password=VaultCore@2026
-
-# JWT — change this secret in production
-jwt.secret=mySecretKeyForJWTGeneration2024VaultCoreFinancialWithExtraSecurityMeasures
-jwt.expiration=86400000       # 24 hours in milliseconds
-jwt.refresh.expiration=604800000  # 7 days in milliseconds
-
-# Fraud Detection
-fraud.threshold=10000         # Transfers above ₹10,000 require OTP
-fraud.otp.expiry.minutes=5
-fraud.sms-mock-enabled=true   # OTP printed to console (no real SMS needed)
-
-# Virtual Threads (Java 21)
-spring.threads.virtual.enabled=true
-```
-
-### Step 3 — Build the project
+### 3. Frontend Setup
 
 ```bash
-mvn clean install -DskipTests
+cd frontend
+npm install
+npm start
 ```
 
-> The first build downloads dependencies from Maven Central. This takes 2–5 minutes. Subsequent builds are fast.
+UI starts at **http://localhost:3000**
 
-### Step 4 — Run the backend
-
-```bash
-mvn spring-boot:run
-```
-
-You should see:
-
-```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::               (v3.1.5)
-
-INFO  VaultcoreApplication - Started VaultcoreApplication in 3.4 seconds
-INFO  o.s.b.w.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081
-```
-
-### Step 5 — Smoke test
-
-```bash
-curl http://localhost:8081/api/auth/test
-# Expected: "Auth controller is reachable!"
-```
+> Ensure the backend is running first. All API calls proxy to `http://localhost:8081/api` (configured in `src/config/api.js`).
 
 ---
 
-## 8. Frontend Installation & Configuration
+## 📡 API Endpoints
 
-### Step 1 — Navigate to the frontend directory
-
-```bash
-cd vaultcore-frontend
+All endpoints except `/api/auth/**` require:
+```
+Authorization: Bearer <JWT>
 ```
 
-### Step 2 — Install dependencies
+### Authentication — `/api/auth`
 
-```bash
-npm install
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/login` | Login → returns JWT token, userId, role |
+| `POST` | `/api/auth/register` | Register new user (USER role) |
+
+### Accounts — `/api/accounts`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/accounts/user/{userId}` | List all accounts for a user with balances (₹ INR) |
+
+### Transfers — `/api/transfers`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/transfers` | Transfer funds — returns `200` (success), `202` (2FA required), `400` (error) |
+
+**Request body:**
+```json
+{
+  "fromAccount": "ACC001",
+  "toAccount": "ACC002",
+  "amount": 5000,
+  "description": "Rent payment",
+  "challengeId": "(only for 2FA step 2)",
+  "otpCode": "(only for 2FA step 2)"
+}
 ```
 
-### Step 3 — Verify API configuration
+**2FA Flow:**
+1. POST transfer with `amount > ₹10,000`
+2. Receive `HTTP 202` with `{ requires2FA: true, challengeId: "2FA-..." }`
+3. Check backend console for mock OTP (when `fraud.sms-mock-enabled=true`)
+4. Re-POST with same fields + `challengeId` + `otpCode`
 
-Open `src/config/api.js`:
+### Stocks — `/api/stocks`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/stocks` | All stocks with current prices (₹ INR) |
+| `GET` | `/api/stocks/{symbol}` | Single stock price + `responseTime` (for latency check) |
+
+### Statements — `/api/statements`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/statements/monthly` | Generate iText 7 PDF. Params: `accountNumber`, `month`, `year`. Returns `application/pdf` |
+
+### Audit Log — `/api/audit`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/audit` | All audit log entries — ADMIN only |
+
+---
+
+## 🔍 Key Features
+
+### Double-Entry Ledger (Immutable)
+
+Every transfer creates exactly two ledger rows sharing the same `transaction_id`:
+- **DEBIT** on the sender's account
+- **CREDIT** on the receiver's account
+
+MySQL triggers block all `UPDATE` and `DELETE` on the `ledger` table. The `UNIQUE (transaction_id, entry_type)` constraint prevents duplicate entries.
+
+### Fraud Detection & 2FA
+
+- Threshold configurable via `fraud.threshold` (default ₹10,000)
+- Any transfer exceeding the threshold generates a 6-digit OTP
+- OTP stored in `two_factor_challenges` table, expires in 5 minutes
+- Mock mode logs OTP to console — ready for Twilio/SendGrid swap
+- Status states: `PENDING` → `VERIFIED` / `EXPIRED` / `FAILED`
+
+### AspectJ Audit Logging (Week 4)
+
+`AuditAspect` uses `@Around` advice targeting all public methods in `com.vaultcore.controller.*`. Captures per request:
+- Username (from JWT context)
+- Method signature + sanitized parameters (passwords redacted)
+- Result / response summary
+- IP address + timestamp
+
+Logging is `@Async` — zero added latency to API requests.
+
+### iText 7 PDF Statements (Week 4)
+
+- Library: iText 7.2.5 (`kernel` + `layout` + `io`)
+- Includes: account summary, opening/closing balance in ₹ INR, all DEBIT/CREDIT entries
+- PDF is password-protected using the account number
+- Filename: `VaultCore_Statement_{acc}_{month}_{year}.pdf`
+
+### Live Stock Portfolio & Latency Monitor (Week 3)
+
+- Prices auto-refresh every **5 seconds** via `setInterval`
+- `AreaChart` — last 20 price data points, ₹ INR Y-axis
+- `LineChart` — per-request latency with red dashed **300ms SLA** threshold line
+- `LatencyBadge` — 🟢 < 100ms · 🟡 100–300ms · 🔴 > 300ms
+- Violation counter tracks how many requests exceeded the SLA
+
+### Indian Rupee (₹ INR) Formatting
+
+All monetary values use the `en-IN` locale:
 
 ```javascript
-const API_BASE_URL = 'http://localhost:8081/api';
-
-export const AUTH_URL      = `${API_BASE_URL}/auth`;
-export const ACCOUNTS_URL  = `${API_BASE_URL}/accounts`;
-export const TRANSFERS_URL = `${API_BASE_URL}/transfers`;
-export const STOCKS_URL    = `${API_BASE_URL}/stocks`;
+const formatINR = (amount) =>
+  new Intl.NumberFormat('en-IN', {
+    style: 'currency', currency: 'INR', minimumFractionDigits: 2
+  }).format(amount);
 ```
 
-The `package.json` also contains `"proxy": "http://localhost:8081/api"` which handles CORS automatically during development.
-
-> If your backend runs on a different port, update `API_BASE_URL` in `api.js` and the `proxy` field in `package.json`.
+| Raw Value | Formatted | Name |
+|-----------|-----------|------|
+| 1000 | ₹1,000.00 | One Thousand |
+| 100000 | ₹1,00,000.00 | One Lakh |
+| 10000000 | ₹1,00,00,000.00 | One Crore |
 
 ---
 
-## 9. Running the Application
+## 🔐 Security Notes
 
-### Start order matters — always start the backend first.
-
-**Terminal 1 — Backend:**
-```bash
-cd vaultcore_backend
-mvn spring-boot:run
-# Wait for: "Started VaultcoreApplication"
-```
-
-**Terminal 2 — Frontend:**
-```bash
-cd vaultcore-frontend
-npm start
-# Browser opens automatically at http://localhost:3000
-```
-
-### Access Points
-
-| Service | URL |
-|---|---|
-| Frontend App | http://localhost:3000 |
-| Backend API | http://localhost:8081/api |
-| Auth Endpoint | http://localhost:8081/api/auth/login |
-| Accounts Endpoint | http://localhost:8081/api/accounts |
-| Transfers Endpoint | http://localhost:8081/api/transfers |
-| Stocks Endpoint | http://localhost:8081/api/stocks |
+| Item | Status |
+|------|--------|
+| JWT Secret | ⚠️ Hardcoded — use `${JWT_SECRET}` env var in production |
+| DB Password | ⚠️ Plaintext in `application.properties` — use secrets manager in production |
+| Password Hashing | ✅ BCrypt cost factor 10 |
+| CORS | ✅ Restricted to `http://localhost:3000` — update for production |
+| JWT Expiry | 24 hours — adjust per security policy |
+| Fraud OTP | ⚠️ Mock mode only — integrate Twilio/SendGrid before production |
+| SSL/HTTPS | ⚠️ Not configured — add SSL certificate for production |
 
 ---
 
-## 10. API Reference
+## 🛠 Troubleshooting
 
-All endpoints (except `/api/auth/**`) require the header:
-```
-Authorization: Bearer <jwt_token>
-```
-
-### Authentication
-
-#### `POST /api/auth/register`
-
-Register a new user. Savings (₹1,000) and Checking (₹500) accounts are auto-created.
-
-**Request Body:**
-```json
-{
-  "username": "alice",
-  "password": "secret123",
-  "email": "alice@example.com",
-  "phone": "+91 9876543210"
-}
-```
-
-**Response `201`:**
-```json
-{
-  "message": "User registered successfully!"
-}
-```
+| Problem | Solution |
+|---------|----------|
+| Backend fails — DB connection refused | Ensure MySQL is running and `vaultcore_db` exists. Check credentials in `application.properties` |
+| `UnsupportedClassVersionError` | Ensure `JAVA_HOME` points to JDK 21+. Run: `java -version` |
+| CORS error in browser | Verify backend is on port 8081. Check `CorsConfig.java` allowed origins |
+| 401 Unauthorized on all API calls | Token expired or missing — log out and log back in |
+| PDF download blank / corrupted | Check `StatementService` logs. Verify account has ledger entries for selected month |
+| No 2FA modal on transfer | Amount must exceed `fraud.threshold` (default ₹10,000). Check Network tab for `202` response |
+| OTP expired | OTP valid for 5 minutes (`fraud.otp.expiry.minutes`). Start a new transfer |
+| Stock prices not updating | Ensure `/api/stocks` is reachable. Check browser console for 401/CORS errors |
+| Latency always > 300ms | Normal on cold-start. Subsequent requests faster with warm HikariCP pool |
 
 ---
 
-#### `POST /api/auth/login`
+## ⚡ Quick-Start Checklist
 
-**Request Body:**
-```json
-{
-  "username": "john_doe",
-  "password": "password"
-}
+1. Install Java 21, Maven 3.8+, MySQL 8, Node 18+
+2. Run `schema.sql` → creates all 5 tables + sample data
+3. `cd vaultcore_backend && ./mvnw spring-boot:run` → starts on `:8081`
+4. `cd frontend && npm install && npm start` → starts on `:3000`
+5. Login: `john_doe` / `password` (or `jane_smith` / `password` or `admin` / `password`)
+6. Test 2FA: transfer > ₹10,000 → check backend console for OTP
+7. Test PDF: Statement page → select account & month → Download PDF
+8. Test Audit: login as `admin` → Audit Log tab
+
+---
+
+## 📁 Project Structure
+
 ```
-
-**Response `200`:**
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiJ9...",
-  "refreshToken": "eyJhbGciOiJIUzI1NiJ9...",
-  "userId": 1,
-  "username": "john_doe",
-  "role": "USER"
-}
+VaultCore/
+├── schema.sql                  # MySQL schema + seed data
+├── vaultcore_backend/          # Spring Boot backend
+│   ├── pom.xml
+│   ├── mvnw / mvnw.cmd
+│   ├── logs/
+│   └── src/main/
+│       ├── java/com/vaultcore/
+│       └── resources/
+│           └── application.properties
+└── frontend/                   # React frontend
+    ├── package.json
+    └── src/
+        ├── App.js
+        ├── config/api.js
+        └── components/
 ```
 
 ---
 
-### Accounts
-
-#### `GET /api/accounts/user/{userId}`
-Returns all accounts belonging to the given user.
-
-**Response `200`:**
-```json
-[
-  {
-    "id": 1,
-    "accountNumber": "ACC001",
-    "accountType": "SAVINGS",
-    "balance": 5000.00
-  },
-  {
-    "id": 2,
-    "accountNumber": "ACC002",
-    "accountType": "CHECKING",
-    "balance": 2500.00
-  }
-]
-```
-
----
-
-#### `GET /api/accounts/{accountNumber}/history`
-Returns the full ledger history for an account.
-
-**Response `200`:**
-```json
-[
-  {
-    "transactionId": "TXN-550e8400-e29b-41d4",
-    "entryType": "DEBIT",
-    "amount": 500.00,
-    "balanceAfter": 4500.00,
-    "counterpartAccount": "ACC003",
-    "description": "Rent payment",
-    "createdAt": "2026-03-07 14:32:10"
-  }
-]
-```
-
----
-
-#### `POST /api/accounts/provision/{userId}`
-Creates default Savings and Checking accounts for an existing user who was registered without accounts.
-
----
-
-### Transfers
-
-#### `POST /api/transfers`
-
-**Normal transfer (amount ≤ ₹10,000):**
-
-**Request Body:**
-```json
-{
-  "fromAccount": "ACC001",
-  "toAccount": "ACC003",
-  "amount": 500.00,
-  "description": "Monthly rent"
-}
-```
-
-**Response `200`:**
-```json
-{
-  "message": "Transfer successful!",
-  "transactionId": "TXN-550e8400-e29b-41d4-a716",
-  "requires2FA": false
-}
-```
-
----
-
-**High-value transfer — Step 1 (amount > ₹10,000):**
-
-**Response `202`:**
-```json
-{
-  "requires2FA": true,
-  "challengeId": "2FA-abc123",
-  "message": "OTP sent to your registered phone/email",
-  "hint": "Check your backend console for the mock OTP"
-}
-```
-
-**High-value transfer — Step 2 (submit OTP):**
-
-```json
-{
-  "fromAccount": "ACC001",
-  "toAccount": "ACC003",
-  "amount": 15000.00,
-  "description": "Car loan payment",
-  "challengeId": "2FA-abc123",
-  "otpCode": "847291"
-}
-```
-
----
-
-### Stocks
-
-#### `GET /api/stocks`
-Returns all available stocks with current simulated prices.
-
-```json
-{
-  "AAPL": 18245.50,
-  "GOOGL": 14332.75,
-  "MSFT": 38921.00,
-  "TSLA": 21045.20
-}
-```
-
-#### `GET /api/stocks/{symbol}`
-Returns the live-simulated price for a single stock symbol. Called every 5 seconds by the Portfolio component.
-
-```json
-{
-  "symbol": "AAPL",
-  "price": 18267.30
-}
-```
-
----
-
-## 11. Feature Walkthrough (Live Demo Guide)
-
-### Step 1 — Register a New User
-
-1. Open http://localhost:3000
-2. Click **"Create Account"** tab
-3. Enter username, email, and password (min. 6 chars)
-4. Click **"Create Account"**
-5. A success message appears. Savings (₹1,000) and Checking (₹500) accounts are created instantly.
-
----
-
-### Step 2 — Login and View Dashboard
-
-1. Switch to **"Sign In"** tab
-2. Login with the credentials you just created (or use `john_doe` / `password`)
-3. The Dashboard shows account cards with balances in ₹ (Indian Rupee format)
-4. Click **"💸 Send Money"** or **"📈 View Portfolio"** for quick navigation
-
----
-
-### Step 3 — Make a Normal Transfer (≤ ₹10,000)
-
-1. Navigate to **Transfer** in the top navbar
-2. Select "From" account (your account) and "To" account (another user's account)
-3. Enter an amount below ₹10,000, e.g., `500`
-4. Add a description like `"Coffee money"`
-5. Click **"Send Money"**
-6. A green success banner with a Transaction ID appears
-
----
-
-### Step 4 — Trigger Fraud Detection (> ₹10,000)
-
-1. On the Transfer page, enter an amount above `10000`, e.g., `15000`
-2. Click **"Send Money"**
-3. The UI transitions to an **OTP verification screen**
-4. Check the **backend terminal** — you will see a log line like:
-   ```
-   [MOCK SMS] OTP for john_doe: 847291 (expires in 5 min)
-   ```
-5. Enter the 6-digit OTP in the frontend
-6. Click **"Verify & Complete Transfer"**
-7. Transfer completes and the ledger is updated
-
----
-
-### Step 5 — View Transaction History
-
-1. Click **"📋 History"** in the navbar
-2. Select an account from the dropdown
-3. See the running balance, total received (green), total sent (red)
-4. Use the **CREDIT / DEBIT / ALL** toggle buttons to filter
-5. Type in the search box to find a specific transaction by description or ID
-6. Toggle between **Newest First** and **Oldest First**
-
----
-
-### Step 6 — Live Stock Portfolio
-
-1. Click **"📈 Portfolio"** in the navbar
-2. A list of stocks appears on the left with current ₹ prices
-3. Select any stock — a live line chart updates every **5 seconds**
-4. The chart header shows the latest price and the delta (▲ up / ▼ down) vs. the previous reading
-
----
-
-## 12. Security Architecture
-
-VaultCore implements a layered security model:
-
-### JWT Token Flow
-
-```
-Login Request
-  → AuthController validates credentials via AuthenticationManager
-    → BCrypt password comparison
-      → JwtUtil.generateToken() → signs with HMAC-SHA256
-        → JwtResponse { token, refreshToken, userId, username, role }
-
-Every subsequent request:
-  → JwtAuthenticationFilter.doFilterInternal()
-    → Extracts "Bearer <token>" from Authorization header
-      → JwtUtil.validateToken()
-        → Sets SecurityContextHolder authentication
-          → Controller proceeds (or 401 if invalid/expired)
-```
-
-### Token Details
-
-| Property | Value |
-|---|---|
-| Algorithm | HMAC-SHA256 (HS256) |
-| Access token expiry | 24 hours |
-| Refresh token expiry | 7 days |
-| Storage (frontend) | `localStorage` |
-| Claims | username, issuer, audience, issuedAt, expiration |
-
-### Password Storage
-
-All passwords are stored as BCrypt hashes with strength factor 10. Plain-text passwords are never stored or logged anywhere in the application.
-
-### Route Protection
-
-Every React route checks `localStorage.getItem('token')` before rendering. Unauthenticated users are redirected to `/login` via React Router `<Navigate>`.
-
----
-
-## 13. Fraud Detection & 2FA
-
-### How It Works
-
-The `FraudDetectionService` runs before every transfer in `TransferController`:
-
-```
-Transfer amount received
-  ↓
-Amount ≤ fraud.threshold (₹10,000)?
-  YES → proceed directly to TransferService
-  NO  → generate 6-digit OTP via SecureRandom
-         → save TwoFactorChallenge to DB (expires in 5 minutes)
-         → mock-log OTP to console (ready for real SMS/email swap)
-         → return 202 with challengeId to frontend
-
-Frontend collects OTP from user
-  ↓
-Re-submit transfer with { challengeId, otpCode }
-  ↓
-FraudDetectionService.verifyChallenge()
-  → challenge status == PENDING?  ✓
-  → OTP matches?                  ✓
-  → Not expired?                  ✓
-     → mark challenge VERIFIED
-     → proceed with transfer
-```
-
-### Configuration
-
-```properties
-fraud.threshold=10000          # Customize in application.properties
-fraud.otp.expiry.minutes=5
-fraud.sms-mock-enabled=true    # Set false + implement real provider for production
-```
-
-### Integrating a Real SMS/Email Provider
-
-In `FraudDetectionService.java`, locate the `sendMockOtp()` method and replace the `log.info(...)` call with your provider SDK call (e.g., Twilio, AWS SNS, SendGrid).
-
----
-
-## 14. Double-Entry Ledger System
-
-Every successful transfer writes exactly **two immutable rows** to the `ledger` table:
-
-| Row | entry_type | account_ref | counterpart_account | amount |
-|---|---|---|---|---|
-| 1 | `DEBIT` | `ACC001` (sender) | `ACC003` | 500.00 |
-| 2 | `CREDIT` | `ACC003` (receiver) | `ACC001` | 500.00 |
-
-### Immutability Enforcement
-
-The schema enforces immutability at the database level via two MySQL triggers:
-
-```sql
-TRIGGER prevent_ledger_update  -- Blocks any UPDATE on ledger rows
-TRIGGER prevent_ledger_delete  -- Blocks any DELETE on ledger rows
-```
-
-Any attempt to modify a past ledger record raises `SQLSTATE 45000` — "Ledger rows are immutable and cannot be modified."
-
-The `Ledger` Java model also has no setter methods, preventing modification at the application layer.
-
-### What `balance_after` Stores
-
-Each ledger row records the account's running balance immediately after the entry. This makes it possible to reconstruct the full balance history of any account at any point in time, without relying on the current `accounts.balance` column.
-
----
-
-## 15. Concurrency & Transaction Isolation
-
-### SERIALIZABLE Isolation
-
-`TransferService.transferMoney()` is annotated with:
-
-```java
-@Transactional(isolation = Isolation.SERIALIZABLE)
-```
-
-This is the strictest ANSI isolation level. It prevents:
-- Dirty reads
-- Non-repeatable reads
-- Phantom reads
-
-### Pessimistic Locking
-
-Both the sender and receiver accounts are locked before any balance check:
-
-```java
-accountRepository.findByAccountNumberWithLock(fromAccountNumber) // SELECT ... FOR UPDATE
-accountRepository.findByAccountNumberWithLock(toAccountNumber)   // SELECT ... FOR UPDATE
-```
-
-Accounts are always locked in alphabetical order by account number to prevent deadlocks between concurrent threads.
-
-### Virtual Threads (Java 21)
-
-The `getBalance()` utility in `TransferService` uses a virtual thread executor:
-
-```java
-ExecutorService virtualExecutor = Executors.newVirtualThreadPerTaskExecutor();
-```
-
-This allows thousands of concurrent balance read operations without exhausting the OS thread pool.
-
----
-
-## 16. Environment Configuration Reference
-
-All backend configuration lives in `src/main/resources/application.properties`.
-
-### Database
-| Property | Default | Description |
-|---|---|---|
-| `spring.datasource.url` | `jdbc:mysql://localhost:3306/vaultcore_db` | JDBC connection string |
-| `spring.datasource.username` | `vaultcore_user` | MySQL username |
-| `spring.datasource.password` | `VaultCore@2026` | MySQL password |
-| `spring.datasource.hikari.maximum-pool-size` | `20` | Max DB connections |
-
-### JWT
-| Property | Default | Description |
-|---|---|---|
-| `jwt.secret` | (long secret string) | HMAC-SHA256 signing key — **change in production** |
-| `jwt.expiration` | `86400000` | Access token TTL in milliseconds (24h) |
-| `jwt.refresh.expiration` | `604800000` | Refresh token TTL in milliseconds (7 days) |
-
-### Fraud Detection
-| Property | Default | Description |
-|---|---|---|
-| `fraud.threshold` | `10000` | Transfers above this amount (₹) trigger 2FA |
-| `fraud.otp.expiry.minutes` | `5` | OTP validity window |
-| `fraud.sms-mock-enabled` | `true` | Logs OTP to console instead of sending real SMS |
-
-### CORS
-| Property | Default | Description |
-|---|---|---|
-| `cors.allowed-origins` | `http://localhost:3000` | Add your production domain here |
-
----
-
-## 17. Sample Data & Test Credentials
-
-The `schema.sql` seeds the following accounts. Password for **all** sample users is `password`.
-
-| Username | Password | Role | Accounts |
-|---|---|---|---|
-| `john_doe` | `password` | USER | ACC001 (Savings ₹5,000), ACC002 (Checking ₹2,500) |
-| `jane_smith` | `password` | USER | ACC003 (Savings ₹10,000), ACC004 (Checking ₹3,000) |
-| `admin` | `password` | ADMIN | None (provision via dashboard) |
-
-### Quick Transfer Test
-
-1. Login as `john_doe`
-2. Transfer ₹500 from `ACC001` → `ACC003` (jane_smith's savings)
-3. Login as `jane_smith` to confirm balance increased
-
-### 2FA Test
-
-1. Login as `john_doe`
-2. Transfer ₹15,000 from `ACC001` → `ACC003`
-3. Check backend console for the mock OTP
-4. Enter OTP in the UI to complete the transfer
-
----
-
-## 18. Troubleshooting
-
-### Backend won't start — "Communications link failure"
-MySQL is not running or the credentials are wrong. Verify:
-```bash
-mysql -u vaultcore_user -p vaultcore_db -e "SELECT 1;"
-```
-If this fails, revisit [Section 6 — Database Setup](#6-database-setup).
-
----
-
-### Backend won't compile — "error: --release 21 not supported"
-You are using Java 17 or below. Check your version:
-```bash
-java -version
-```
-Install Java 21 JDK from https://adoptium.net and ensure `JAVA_HOME` points to it.
-
----
-
-### Frontend shows "Cannot connect to server" on Login
-The backend is not running, or it started on a different port. Verify the backend is up:
-```bash
-curl http://localhost:8081/api/auth/test
-```
-Also confirm `"proxy": "http://localhost:8081/api"` is present in `package.json`.
-
----
-
-### "No accounts found" on Dashboard after registration
-This is handled automatically — the Dashboard shows a provisioning button. Click **"✅ Create My Accounts"** to instantly create Savings and Checking accounts. Alternatively, accounts are auto-provisioned on the next login if missing.
-
----
-
-### OTP not appearing / 2FA stuck
-Ensure `fraud.sms-mock-enabled=true` in `application.properties`. The OTP is printed to the **backend terminal** (not the browser). Search the console for a line like:
-```
-[MOCK SMS] OTP for john_doe: 847291 (expires in 5 min)
-```
-
----
-
-### Port 3000 or 8081 already in use
-```bash
-# Kill the process on port 3000
-lsof -ti :3000 | xargs kill -9
-
-# Kill the process on port 8081
-lsof -ti :8081 | xargs kill -9
-```
-
----
-
-### `npm install` fails on Node version error
-Upgrade Node.js to v18 or later:
-```bash
-node -v   # must be 18+
-```
-Use [nvm](https://github.com/nvm-sh/nvm) to manage multiple Node versions if needed.
-
----
-
-*Built with Spring Boot 3 · React 19 · MySQL 8 · Java 21 Virtual Threads*
+*VaultCore Financial · Spring Boot 3.1.5 + React 18 + MySQL 8 · All amounts in ₹ INR*
