@@ -1,12 +1,12 @@
-// frontend/src/components/Navbar.js
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 function Navbar({ onLogout }) {
-    const navigate  = useNavigate();
-    const location  = useLocation();
-    const token     = localStorage.getItem('token');
-    const username  = localStorage.getItem('username');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const token    = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    const role     = localStorage.getItem('role');
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -20,7 +20,6 @@ function Navbar({ onLogout }) {
 
     if (!token) return null;
 
-    // Helper to mark active nav link
     const isActive = (path) => location.pathname === path ? 'nav-link active' : 'nav-link';
 
     return (
@@ -30,7 +29,8 @@ function Navbar({ onLogout }) {
                     💎 VaultCore Financial
                 </Link>
 
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button className="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
@@ -46,7 +46,6 @@ function Navbar({ onLogout }) {
                                 💸 Transfer
                             </Link>
                         </li>
-                        {/* ✅ NEW: Transaction History link */}
                         <li className="nav-item">
                             <Link className={isActive('/history')} to="/history">
                                 📋 History
@@ -57,9 +56,24 @@ function Navbar({ onLogout }) {
                                 📈 Portfolio
                             </Link>
                         </li>
+                       
+                        <li className="nav-item">
+                            <Link className={isActive('/statement')} to="/statement">
+                                📄 Statement
+                            </Link>
+                        </li>
+                       
+                        {role === 'ADMIN' && (
+                            <li className="nav-item">
+                                <Link className={isActive('/audit')} to="/audit">
+                                    🔍 Audit
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                     <span className="navbar-text me-3">
                         Welcome, {username}!
+                        {role === 'ADMIN' && <span className="badge bg-warning text-dark ms-1">Admin</span>}
                     </span>
                     <button className="btn btn-light" onClick={handleLogout}>Logout</button>
                 </div>
