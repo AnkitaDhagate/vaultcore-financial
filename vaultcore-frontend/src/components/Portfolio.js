@@ -1,8 +1,3 @@
-// frontend/src/components/Portfolio.js
-// Week 3: Trading & External APIs
-// - Mock Stock REST client (StockService backend)
-// - Portfolio dashboard with Recharts visualization
-// - ✅ Latency check: warns if stock price round-trip > 300ms
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import {
